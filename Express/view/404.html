@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+            background: radial-gradient(circle at top, #1f2937, #0f172a 45%, #020817);
+            color: #e2e8f0;
+            overflow: hidden;
+        }
+
+        .error-wrap {
+            text-align: center;
+            padding: 40px 24px;
+            max-width: 700px;
+            position: relative;
+        }
+
+        .error-wrap::before,
+        .error-wrap::after {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+        }
+
+        .error-wrap::before {
+            background: rgba(59, 130, 246, 0.25);
+            top: -60px;
+            left: -40px;
+        }
+
+        .error-wrap::after {
+            background: rgba(168, 85, 247, 0.25);
+            bottom: -50px;
+            right: -30px;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .code {
+            font-size: clamp(6rem, 16vw, 13rem);
+            font-weight: 900;
+            letter-spacing: 10px;
+            margin: 0;
+            background: linear-gradient(135deg, #60a5fa, #c084fc, #f9a8d4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 24px rgba(96, 165, 250, 0.35);
+        }
+
+        h1 {
+            margin: 10px 0 12px;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+        }
+
+        p {
+            margin: 0 auto 26px;
+            max-width: 560px;
+            line-height: 1.6;
+            color: #cbd5e1;
+            font-size: 1.05rem;
+        }
+
+        .btns {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 24px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.25s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            box-shadow: 0 12px 30px rgba(59, 130, 246, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 16px 36px rgba(139, 92, 246, 0.45);
+        }
+
+        .btn-secondary {
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            color: #e2e8f0;
+            background: rgba(15, 23, 42, 0.35);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(148, 163, 184, 0.08);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="error-wrap">
+        <div class="content">
+            <p class="code">404</p>
+            <h1>Oops! This page wandered off.</h1>
+            <p>
+                The page you are looking for might have been moved, deleted, or never existed.
+                Don’t worry — even the best apps lose their way sometimes.
+            </p>
+            <div class="btns">
+                <a href="/" class="btn btn-primary">Go Home</a>
+                <a href="javascript:history.back()" class="btn btn-secondary">Go Back</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

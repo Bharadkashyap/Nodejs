@@ -1,0 +1,3 @@
+this is bannana file
+this is second line in apple from append
+this is third line in apple from append

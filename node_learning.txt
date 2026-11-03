@@ -1,0 +1,9 @@
+node js working 
+
+1) call stack - for js -lcfs
+
+2) node api - for node in built apis (like settimeout
+
+3) event loop - ready process that  finish execution in async functionality (like waiting room) it pass to call stack 
+ - callback queue-fcfs
+
