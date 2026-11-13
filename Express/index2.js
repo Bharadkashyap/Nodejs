@@ -1,9 +1,9 @@
 import express from 'express'; // es6 syntax
 import path from 'path';
 const app=express();
-    const abspath=path.resolve("view/");
-
-
+const abspath=path.resolve("view/");
+const publicpath=path.resolve("public");   
+app.use(express.static(publicpath));    
 app.get("/",(req,res)=> {
     // console.log(abspath);
     res.sendFile(abspath+"/home.html");

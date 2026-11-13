@@ -1,0 +1,13 @@
+ a {
+     text-decoration: none;
+     padding: 10px 20px;
+     background-color: aqua;
+     color: white;
+     border-radius: 10px;
+
+ }
+
+ a-hover {
+     background-color: blue;
+
+ }
