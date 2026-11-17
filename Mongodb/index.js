@@ -1,5 +1,5 @@
 import express from "express";
-import { MongoClient } from "mongodb"; // we extract MongoClient from mongodb package
+import { MongoClient,ObjectId } from "mongodb"; // we extract MongoClient from mongodb package
 
 const dbName = "collage"; // used for database name
 const url = "mongodb://localhost:27017"; // used for connecting to mongodb database
@@ -8,6 +8,7 @@ const client = new MongoClient(url);
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.set("view engine", "ejs");
 
 client.connect().then((connection) => {
@@ -45,9 +46,66 @@ client.connect().then((connection) => {
     resp.send("Student added successfully");
   });
 
-  app.post("/add-student-api", (req, resp) => {
-    resp.send({ Message: "success" });
+  app.post("/add-student-api", async (req, resp) => {
+    const { name, age, email } = req.body;
+    if (!name || !age || !email) {
+      resp.send({
+        message: "Please provide all the required fields",
+        success: false,
+      });
+      return false;
+    }
+    const collection = db.collection("student");
+    const result = await collection.insertOne(req.body);
+    console.log(req.body);
+
+    resp.send({
+      Message: "data inserted successfully",
+      success: true,
+      result: result,
+    });
   });
+
+  app.delete("/delete/:id", async (req, resp) => {
+    console.log(req.params.id);
+    const collection = db.collection("student");
+    const result = await collection.deleteOne({
+      _id: new ObjectId(req.params.id),
+    });
+    if (result) {
+      resp.send({
+        message: "Student data deleted successfully",
+        success: true,
+      });
+    } else {
+      resp.send({ message: "Student data not found", success: false });
+    }
+  });
+
+  app.get("/ui/delete/:id", async (req, resp) => {
+    console.log(req.params.id);
+    const collection = db.collection("student");
+    const result = await collection.deleteOne({
+      _id: new ObjectId(req.params.id),
+    });
+    if (result) {
+      resp.send(
+        `<h1>Student data deleted successfully</h1><a href="/ui">Go Back</a> `,
+      );
+    } else {
+      resp.send(`<h1>Student data not found</h1><a href="/ui">Go Back</a> `);
+    }
+  });
+
+
+  app.get("/ui/student/:id",async (req,resp)=>{
+    const id=req.params.id;
+    console.log(id);
+    const collection=db.collection("student")
+    const result= await collection.findOne({_id:new ObjectId(id)})
+    resp.render("updateStudent",{result:result})
+
+  })
 });
 
 // app.get("/", async (req, resp) => {
