@@ -7,10 +7,10 @@
 </head>
 <body>
     <h1>Add Student</h1>
-    <form action="" method="post">
-    <input type="text" name="name" placeholder="Enter Name"><br/><br/>
-    <input type="text" name="email" placeholder="Enter Email"><br/><br/>
-    <input type="text" name="age" placeholder="Enter Age"><br/><br/>    
+    <form action="/ui/update/<%= result._id %>" method="post">
+    <input type="text" name="name" value="<%= result.name %>" placeholder="Enter Name"><br/><br/>
+    <input type="text" name="email" value="<%= result.email %>" placeholder="Enter Email"><br/><br/>
+    <input type="text" name="age" value="<%= result.age %>" placeholder="Enter Age"><br/><br/>    
     <input type="submit" value="update Student">
     </form>
     
